@@ -1,0 +1,73 @@
+site_name: FoodBack
+site_description: Documentação oficial do projeto FoodBack
+
+theme:
+  name: material
+  language: pt-BR
+
+  palette:
+    - scheme: default
+      primary: custom
+      accent: green
+      toggle:
+        icon: material/weather-night
+        name: Modo escuro
+      colors:
+        primary: "#00A86B"
+        accent: "#6BEFA3"
+
+    - scheme: slate
+      primary: custom
+      accent: green
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+      colors:
+        primary: "#00915E"
+        accent: "#4EDC84"
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  icon:
+    logo: material/pizza
+
+  features:
+    - navigation.expand
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.share
+    - toc.integrate
+    - content.code.copy
+    - content.tabs.link
+    - content.footnotes
+    - content.tooltips
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - "🏠 Início": index.md
+  - "📘 Descrição Geral": descricao.md
+  - "⚠️ Problema Identificado": problema.md
+  - "💡 Justificativa": justificativa.md
+  - "🎯 Público-Alvo / Usuários": publico-alvo.md
+  - "🏁 Concorrentes": concorrentes.md
+  - "⚙️ Solução / Funcionamento": solucao.md
+  - "🧠 Mapa de Empatia": empatia.md
+
+  - "🧭 Jornada do Usuário":
+      - "🏭 Empresa Doadora": jornada-empresa.md
+      - "🤝 ONG Receptora": jornada-ong.md
+
+  - "🧰 Tecnologias Utilizadas": tecnologias.md
+
+  - "📑 Requisitos":
+      - "📋 Funcionais e Não Funcionais": requisitos.md
+
+  - "💲 Simulador Financeiro": financeiro.md
+  - "🚀 Visão de Futuro": futuro.md
+  - "🎬 Pitch": pitch.md
+  - "🧾 Considerações Finais": consideracoes.md

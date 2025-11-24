@@ -1,0 +1,102 @@
+/* === Navbar FoodBack === */
+.md-header {
+    background-color: #2ECC71 !important;
+}
+
+.md-header__title {
+    color: white !important;
+}
+
+/* Ícone do menu (hamburger) */
+.md-header__button {
+    color: white !important;
+}
+
+/* Links da navegação superior */
+.md-tabs__link {
+    color: white !important;
+}
+
+/* Hover nos links */
+.md-tabs__link:hover {
+    opacity: .85;
+}
+
+/* Tema escuro — ajusta o header */
+[data-md-color-scheme="slate"] .md-header {
+    background-color: #27AE60 !important; /* uma cor verde mais escura */
+}
+ /* =========================================================
+   SIDEBAR — FoodBack (modo claro e escuro)
+   ========================================================= */
+
+/* ----- MODO CLARO ----- */
+[data-md-color-scheme="default"] .md-sidebar--primary {
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1) !important;
+    background: #F8F8F8 !important; /* fundo mais suave */
+    background-color: #ffffff !important;
+    border-right: none !important; /* remove a barra verde indesejada */
+}
+
+[data-md-color-scheme="default"] .md-nav__link {
+    color: #333333 !important;
+}
+
+[data-md-color-scheme="default"] .md-nav__link:hover {
+    color: #27AE60 !important;
+}
+
+[data-md-color-scheme="default"] .md-nav__item--active > .md-nav__link {
+    color: #2ECC71 !important;
+    font-weight: 700 !important;
+    background: rgba(46,204,113,0.15) !important;
+    border-radius: 6px !important;
+    padding-left: 8px !important;
+}
+
+/* Submenus */
+[data-md-color-scheme="default"] .md-nav__item .md-nav__list {
+    border-left: 2px solid #2ECC71 !important;
+    padding-left: 6px;
+}
+
+
+
+/* ----- MODO ESCURO ----- */
+[data-md-color-scheme=""] .md-sidebar--primary {
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1) !important;
+    background: #F8F8F8 !important; /* fundo mais suave */
+    background-color: #1e1e1e !important; /* cinza escuro elegante */
+    border-right: none !important; /* remove a barra verde indesejada */
+}
+
+/* LINKS */
+[data-md-color-scheme="slate"] .md-nav__link {
+    color: #E0E0E0 !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+    color: #2ECC71 !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__item--active > .md-nav__link {
+    color: #2ECC71 !important;
+    font-weight: 700 !important;
+}
+
+/* SUBMENUS – mantém apenas aqui a linha verde */
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__list {
+    border-left: 2px solid #2ECC71 !important;
+    padding-left: 6px;
+}
+
+.md-content {
+    max-width: 900px;
+    margin: auto;
+}
+
+.md-typeset p {
+    line-height: 1.6;
+    font-size: 17px;
+}
+
