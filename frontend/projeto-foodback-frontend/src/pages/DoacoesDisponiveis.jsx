@@ -169,6 +169,7 @@ function DoacoesDisponiveis() {
           {/* Filtros e Busca */}
           <div className="filtros-container">
             <div className="filtro-busca">
+              <label>Buscar:</label>
               <input
                 type="text"
                 placeholder="🔍 Buscar por título, descrição ou empresa..."

@@ -9,6 +9,11 @@ import HomeOng from './pages/HomeOng';
 import HomeEmpresa from './pages/HomeEmpresa';
 import DoacoesDisponiveis from "./pages/DoacoesDisponiveis";
 import Solicitacoes from "./pages/Solicitacoes";
+import MinhasSolicitacoes from "./pages/MinhasSolicitacoes";
+import RetiradasAgendadas from "./pages/RetiradasAgendadas";
+import HistoricoOng from "./pages/HistoricoOng";
+import MinhasDoacoesEmpresa from "./pages/MinhasDoacoesEmpresa";
+import HistoricoEmpresa from "./pages/HistoricoEmpresa"; 
 
 function App() {
   return (
@@ -25,6 +30,11 @@ function App() {
         <Route path="/completar-perfil" element={<CompletarPerfil />} />
         <Route path="/doacoes-disponiveis" element={<DoacoesDisponiveis />} />
         <Route path="/solicitacoes" element={<Solicitacoes />} />
+        <Route path="/minhas-solicitacoes" element={<MinhasSolicitacoes />} />
+        <Route path="/retiradas" element={<RetiradasAgendadas />} />
+        <Route path="/historico-ong" element={<HistoricoOng />} />
+        <Route path="/minhas-doacoes" element={<MinhasDoacoesEmpresa />} />
+        <Route path="/historico-empresa" element={<HistoricoEmpresa />} />
       </Routes>
     </Router>
   );

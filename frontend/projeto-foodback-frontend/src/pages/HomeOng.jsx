@@ -9,6 +9,8 @@ function HomeOng() {
   const [doacoesDisponiveis, setDoacoesDisponiveis] = useState([]);
   const [minhasSolicitacoes, setMinhasSolicitacoes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingOng, setLoadingOng] = useState(true); // ✅ Estado separado para ONG
+  const [erroOng, setErroOng] = useState(null); // ✅ Estado para erros
 
   useEffect(() => {
     const usuarioLogado = JSON.parse(localStorage.getItem("usuario"));
@@ -24,17 +26,32 @@ function HomeOng() {
     console.log("🚀 ONG: Carregando dados para id_usuario:", id_usuario);
 
     // ✅ Busca dados da ONG
+    setLoadingOng(true);
+    setErroOng(null);
+    
     try {
       const resOng = await fetch(`http://127.0.0.1:3001/ong/${id_usuario}`);
+      console.log("📡 ONG: Status da resposta:", resOng.status);
+      
       if (resOng.ok) {
         const dadosOng = await resOng.json();
-        console.log("🏛️ ONG: Dados da ONG:", dadosOng);
+        console.log("🏛️ ONG: Dados completos da ONG recebidos:", dadosOng);
+        console.log("📋 ONG: Natureza Jurídica:", dadosOng.natureza_juridica);
+        console.log("📋 ONG: Área de Atuação:", dadosOng.area_atuacao);
+        console.log("📋 ONG: Pessoas Atendidas:", dadosOng.numero_pessoas_atendidas);
+        console.log("📋 ONG: Possui Transporte:", dadosOng.possui_transporte);
+        
         setOng(dadosOng);
       } else {
-        console.error("❌ Erro ao buscar dados da ONG:", resOng.status);
+        const errorText = await resOng.text();
+        console.error("❌ Erro ao buscar dados da ONG:", resOng.status, errorText);
+        setErroOng("Não foi possível carregar as informações da ONG");
       }
     } catch (error) {
       console.error("❌ Erro ao carregar ONG:", error);
+      setErroOng("Erro ao conectar com o servidor");
+    } finally {
+      setLoadingOng(false); // ✅ Finaliza loading da ONG independentemente do resultado
     }
 
     // ✅ Busca TODAS as doações disponíveis (global)
@@ -201,27 +218,53 @@ function HomeOng() {
             </div>
           </div>
 
-          {/* Informações da ONG */}
+          {/* Informações da ONG - ✅ CORRIGIDO */}
           <section className="section-info-ong">
             <h3>Informações da ONG</h3>
-            <div className="info-grid">
-              <div className="info-item">
-                <strong>Natureza Jurídica:</strong>
-                <span>{ong?.natureza_juridica || "Não informado"}</span>
+            {loadingOng ? (
+              <div className="empty-state">
+                <p>Carregando informações da ONG...</p>
               </div>
-              <div className="info-item">
-                <strong>Área de Atuação:</strong>
-                <span>{ong?.area_atuacao || "Não informado"}</span>
+            ) : erroOng ? (
+              <div className="empty-state error">
+                <p>❌ {erroOng}</p>
+                <button 
+                  onClick={() => carregarDados(usuario?.id_usuario)}
+                  className="btn-retry"
+                >
+                  Tentar novamente
+                </button>
               </div>
-              <div className="info-item">
-                <strong>Pessoas Atendidas:</strong>
-                <span>{ong?.numero_pessoas_atendidas || "Não informado"}</span>
+            ) : ong ? (
+              <div className="info-grid">
+                <div className="info-item">
+                  <strong>Natureza Jurídica:</strong>
+                  <span>{ong.natureza_juridica || "Não informado"}</span>
+                </div>
+                <div className="info-item">
+                  <strong>Área de Atuação:</strong>
+                  <span>{ong.area_atuacao || "Não informado"}</span>
+                </div>
+                <div className="info-item">
+                  <strong>Pessoas Atendidas:</strong>
+                  <span>{ong.numero_pessoas_atendidas ? `${ong.numero_pessoas_atendidas} pessoas` : "Não informado"}</span>
+                </div>
+                <div className="info-item">
+                  <strong>Possui Transporte:</strong>
+                  <span>{ong.possui_transporte === true || ong.possui_transporte === 1 ? "Sim" : ong.possui_transporte === false || ong.possui_transporte === 0 ? "Não" : "Não informado"}</span>
+                </div>
               </div>
-              <div className="info-item">
-                <strong>Possui Transporte:</strong>
-                <span>{ong?.possui_transporte ? "Sim" : "Não"}</span>
+            ) : (
+              <div className="empty-state">
+                <p>⚠️ Nenhuma informação da ONG encontrada.</p>
+                <button 
+                  onClick={() => navigate("/perfil-ong")}
+                  className="btn-completar-perfil"
+                >
+                  Completar Perfil
+                </button>
               </div>
-            </div>
+            )}
           </section>
 
           {/* Doações Recentes no Sistema (GLOBAL - Igual ao da Empresa) */}

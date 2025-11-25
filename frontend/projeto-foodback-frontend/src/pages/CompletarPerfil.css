@@ -13,7 +13,7 @@
   padding: 40px;
   max-width: 700px;
   width: 100%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgb(0 0 0 / 30%);
 }
 
 .completar-perfil-container h1 {
@@ -74,7 +74,7 @@
 .completar-perfil-form textarea:focus {
   outline: none;
   border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 3px rgb(102 126 234 / 10%);
 }
 
 .completar-perfil-form textarea {
@@ -128,7 +128,7 @@
 
 .btn-completar:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 10px 25px rgb(102 126 234 / 40%);
 }
 
 .btn-completar:disabled {
@@ -147,7 +147,7 @@
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .completar-perfil-wrapper {
     padding: 20px 10px;
   }

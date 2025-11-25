@@ -5,10 +5,10 @@
   height: 100vh;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 70%, #000000 100%),
+  background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 70%, #000 100%),
               url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
   background-blend-mode: overlay;
-  font-family: "Poppins", sans-serif;
+  font-family: Poppins, sans-serif;
 }
 
 /* CONTAINER */
@@ -19,14 +19,14 @@
   height: 85vh;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 25%);
   background-color: white;
 }
 
 /* LADO ESQUERDO (mesmo fundo da HomePage) */
 .register-left {
   flex: 1;
-  background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 70%, #000000 100%),
+  background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 70%, #000 100%),
               url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
   background-blend-mode: overlay;
   color: white;
@@ -41,13 +41,13 @@
 .register-left h1 {
   font-size: 4rem;
   margin-bottom: 8px;
-  font-family: "Anton", sans-serif;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  font-family: Anton, sans-serif;
+  text-shadow: 2px 2px 5px rgb(0 0 0 / 40%);
 }
 
 /* Cores do nome FOODBACK */
 .register-left .logo-food {
-  color: #ffffff;
+  color: #fff;
 }
 
 .register-left .logo-back {
@@ -242,7 +242,7 @@
 }
 
 /* Responsivo */
-@media (max-width: 900px) {
+@media (width <= 900px) {
   .register-container {
     flex-direction: column;
     width: 90%;

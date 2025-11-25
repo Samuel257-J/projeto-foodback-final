@@ -7,12 +7,12 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [mostrarSenha, setMostrarSenha] = useState(false);
-  const [mensagem, setMensagem] = useState("");
+  const [loginMensagem, setLoginMensagem] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
   e.preventDefault();
-  setMensagem("Carregando...");
+  setLoginMensagem("Carregando...");
 
   try {
     const resposta = await fetch("http://127.0.0.1:3001/api/login", {
@@ -41,7 +41,7 @@ function LoginForm() {
       console.log("📊 Tipo de perfil_completo:", typeof resultadoVerificacao.perfil_completo); // LOG 6
       console.log("📊 Valor exato:", resultadoVerificacao.perfil_completo); // LOG 7
 
-      setMensagem("Login bem-sucedido! Redirecionando...");
+      setLoginMensagem("Login bem-sucedido! Redirecionando...");
 
       setTimeout(() => {
         console.log("🎯 Verificando condição..."); // LOG 8
@@ -63,11 +63,11 @@ function LoginForm() {
         }
       }, 800);
     } else {
-      setMensagem(dados.error || "Erro no login.");
+      setLoginMensagem(dados.error || "Erro no login.");
     }
   } catch (erro) {
     console.error("❌ Erro ao logar:", erro);
-    setMensagem("Erro ao conectar com o servidor.");
+    setLoginMensagem("Erro ao conectar com o servidor.");
   }
 };
 
@@ -93,7 +93,7 @@ function LoginForm() {
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
+    <form className="login-login-form" onSubmit={handleSubmit}>
       <label>E-mail</label>
       <input
         type="email"
@@ -104,7 +104,7 @@ function LoginForm() {
       />
 
       <label>Senha</label>
-      <div className="campo-senha">
+      <div className="login-campo-senha">
         <input
           type={mostrarSenha ? "text" : "password"}
           placeholder="Digite sua senha"
@@ -113,7 +113,7 @@ function LoginForm() {
           required
         />
         <span
-          className="icone-senha"
+          className="login-icone-senha"
           onClick={() => setMostrarSenha(!mostrarSenha)}
         >
           {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
@@ -122,17 +122,17 @@ function LoginForm() {
 
       <a
         href="#"
-        className="forgot-password"
+        className="login-forgot-password"
         onClick={handleForgotPassword}
       >
         Esqueceu a sua senha?
       </a>
 
-      <button type="submit" className="btn-login">
+      <button type="submit" className="login-btn-login">
         LOGAR
       </button>
 
-      {mensagem && <p className="mensagem">{mensagem}</p>}
+      {loginMensagem && <p className="login-mensagem">{loginMensagem}</p>}
     </form>
   );
 }

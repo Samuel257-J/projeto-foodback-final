@@ -14,8 +14,7 @@ import luizfel from "../assets/decor/LuizFel.png"
 import marceloaug from "../assets/decor/MarceloAug.png"
 import pauloric from "../assets/decor/PauloRic.png"
 import samuelvic from "../assets/decor/SamuelVicente.png" 
-
-
+import ethancoh from "../assets/decor/EthanCohelet.jpeg"
 
 function HomePage() {
   const navigate = useNavigate();
@@ -154,7 +153,9 @@ function HomePage() {
             <p className="cargo-membro">Gestor de Marketing</p>
           </div>
           <div className="membro-equipe">
-            <div className="circulo-membro"></div>
+            <div className="circulo-membro">
+              <img src={ethancoh} alt="Ethan Cohelet" className="foto-membro" />
+            </div>
             <h3 className="nome-membro">Ethan Cohelet</h3>
             <p className="cargo-membro">Diretor do Projeto</p>
           </div>

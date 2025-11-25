@@ -1,10 +1,10 @@
-.doacoes-disponiveis-page {
+.minhas-doacoes-empresa-page {
   min-height: 100vh;
   background-color: #f5f5f5;
 }
 
-/* Header (reutiliza do HomeOng) */
-.header-ong {
+/* Header */
+.header-empresa {
   background: linear-gradient(135deg, #0c0e0c 0%, #0a1b0a 100%);
   color: white;
   padding: 1rem 2rem;
@@ -56,13 +56,13 @@
 }
 
 /* Layout Principal */
-.content-doacoes {
+.content-doacoes-empresa {
   display: flex;
   min-height: calc(100vh - 70px);
 }
 
 /* Sidebar */
-.sidebar-ong {
+.sidebar-empresa {
   width: 250px;
   background-color: white;
   padding: 2rem 1rem;
@@ -100,17 +100,8 @@
   font-weight: 600;
 }
 
-.badge {
-  background-color: #ff5252;
-  color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
 /* Main Content */
-.main-doacoes {
+.main-doacoes-empresa {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
@@ -132,6 +123,74 @@
   margin: 0;
 }
 
+/* Estatísticas */
+.stats-doacoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.stat-total .stat-icon {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+}
+
+.stat-disponiveis .stat-icon {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+}
+
+.stat-reservadas .stat-icon {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+}
+
+.stat-retiradas .stat-icon {
+  background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
 /* Filtros */
 .filtros-container {
   background: white;
@@ -140,7 +199,7 @@
   box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
   margin-bottom: 2rem;
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 1.5rem;
   align-items: end;
 }
@@ -149,7 +208,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  width: 40%;
+  width: 100%;
 }
 
 .filtro-busca label {
@@ -160,7 +219,7 @@
 }
 
 .input-busca {
-  width: 1%;
+  width: 100%;
   padding: 1rem 1.2rem;
   border: 2px solid #e0e0e0;
   border-radius: 10px;
@@ -211,6 +270,7 @@
   background-repeat: no-repeat;
   background-position: right 1rem center;
   padding-right: 2.5rem;
+  width: 100%;
 }
 
 .select-filtro:hover {
@@ -227,7 +287,7 @@
 /* Grid de Doações */
 .doacoes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   gap: 1.5rem;
 }
 
@@ -241,6 +301,24 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border-left: 4px solid #e0e0e0;
+}
+
+.doacao-card.status-disponivel {
+  border-left-color: #4caf50;
+}
+
+.doacao-card.status-reservada {
+  border-left-color: #ff9800;
+}
+
+.doacao-card.status-retirada {
+  border-left-color: #9c27b0;
+}
+
+.doacao-card.status-cancelada {
+  border-left-color: #f44336;
+  opacity: 0.7;
 }
 
 .doacao-card:hover {
@@ -262,7 +340,7 @@
   flex: 1;
 }
 
-.badge-categoria {
+.badge-status {
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -270,12 +348,44 @@
   white-space: nowrap;
 }
 
+.badge-disponivel {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badge-reservada {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.badge-retirada {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.badge-cancelada {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.doacao-categoria-badge {
+  margin-top: -0.5rem;
+}
+
+.badge-categoria {
+  padding: 0.3rem 0.7rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
 .badge-alimentos {
   background-color: #e3f2fd;
   color: #1976d2;
 }
 
-.badge-laticinios {
+.badge-laticínios {
   background-color: #fff3e0;
   color: #f57c00;
 }
@@ -296,7 +406,7 @@
   line-height: 1.5;
   margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -305,7 +415,7 @@
 .doacao-info-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
+  gap: 1rem;
   padding: 1rem 0;
   border-top: 1px solid #f0f0f0;
   border-bottom: 1px solid #f0f0f0;
@@ -321,6 +431,12 @@
   grid-column: 1 / -1;
 }
 
+.info-item.ong-reservou {
+  background-color: #fff3e0;
+  padding: 0.8rem;
+  border-radius: 8px;
+}
+
 .info-label {
   font-size: 0.85rem;
   color: #999;
@@ -333,46 +449,22 @@
   font-weight: 600;
 }
 
-.empresa-nome {
-  color: #2e7d32;
+.solicitacoes-count {
+  color: #1976d2;
+}
+
+.ong-nome {
+  color: #f57c00;
 }
 
 /* Footer do Card */
 .doacao-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 1rem;
 }
 
-.doacao-status {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #2e7d32;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.status-indicator {
-  width: 8px;
-  height: 8px;
-  background-color: #4caf50;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-}
-
-.btn-solicitar-doacao {
+.btn-ver-detalhes {
+  flex: 1;
   background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
   color: white;
   border: none;
@@ -385,13 +477,27 @@
   box-shadow: 0 2px 8px rgb(46 125 50 / 30%);
 }
 
-.btn-solicitar-doacao:hover {
+.btn-ver-detalhes:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgb(46 125 50 / 40%);
 }
 
-.btn-solicitar-doacao:active {
-  transform: translateY(0);
+.btn-cancelar {
+  background: linear-gradient(135deg, #d32f2f 0%, #f44336 100%);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgb(211 47 47 / 30%);
+}
+
+.btn-cancelar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgb(211 47 47 / 40%);
 }
 
 /* Empty State */
@@ -401,6 +507,7 @@
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  margin-top: 1rem;
 }
 
 .empty-icon {
@@ -420,7 +527,8 @@
   margin: 0 0 1.5rem;
 }
 
-.btn-limpar-filtros {
+.btn-limpar-filtros,
+.btn-nova-doacao {
   background-color: #2e7d32;
   color: white;
   border: none;
@@ -431,7 +539,8 @@
   transition: all 0.3s;
 }
 
-.btn-limpar-filtros:hover {
+.btn-limpar-filtros:hover,
+.btn-nova-doacao:hover {
   background-color: #1b5e20;
   transform: translateY(-2px);
 }
@@ -447,12 +556,26 @@
 }
 
 /* Responsivo */
+@media (width <= 1024px) {
+  .filtros-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filtro-busca {
+    grid-column: 1 / -1;
+  }
+
+  .stats-doacoes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (width <= 768px) {
-  .content-doacoes {
+  .content-doacoes-empresa {
     flex-direction: column;
   }
 
-  .sidebar-ong {
+  .sidebar-empresa {
     width: 100%;
   }
 
@@ -460,11 +583,15 @@
     grid-template-columns: 1fr;
   }
 
-  .filtros-opcoes {
-    flex-direction: column;
+  .filtros-container {
+    grid-template-columns: 1fr;
   }
 
-  .filtro-grupo {
-    width: 100%;
+  .stats-doacoes {
+    grid-template-columns: 1fr;
+  }
+
+  .doacao-footer {
+    flex-direction: column;
   }
 }

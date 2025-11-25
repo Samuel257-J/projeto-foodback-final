@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 function NovaDoacaoModal({ mostrarModal, setMostrarModal, onDoacaoCadastrada }) {
   const [loading, setLoading] = useState(false);
@@ -688,6 +689,13 @@ function NovaDoacaoModal({ mostrarModal, setMostrarModal, onDoacaoCadastrada }) 
       `}</style>
     </div>
   );
+  
 }
+NovaDoacaoModal.propTypes = {
+  mostrarModal: PropTypes.bool.isRequired,
+  setMostrarModal: PropTypes.func.isRequired,
+  onDoacaoCadastrada: PropTypes.func
+};
+
 
 export default NovaDoacaoModal;

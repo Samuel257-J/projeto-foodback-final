@@ -1,18 +1,18 @@
 /* Formulário de Login */
-.login-form {
+.login-login-form {
   width: 100%;
   max-width: 350px;
   display: flex;
   flex-direction: column;
 }
 
-.login-form label {
+.login-login-form label {
   margin-bottom: 5px;
   font-weight: 500;
   color: #333;
 }
 
-.login-form input {
+.login-login-form input {
   padding: 10px;
   margin-bottom: 15px;
   border-radius: 6px;
@@ -21,13 +21,13 @@
 }
 
 /* Campo de senha com ícone 👁️ */
-.campo-senha {
+.login-campo-senha {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.campo-senha input {
+.login-campo-senha input {
   width: 100%;
   padding: 10px;
   padding-right: 40px;
@@ -37,7 +37,7 @@
   font-size: 1rem;
 }
 
-.icone-senha {
+.login-icone-senha {
   position: absolute;
   right: 12px;
   top: 44%;
@@ -48,11 +48,11 @@
   transition: color 0.2s ease;
 }
 
-.icone-senha:hover {
+.login-icone-senha:hover {
   color: #1f5d14;
 }
 
-.forgot-password {
+.login-forgot-password {
   font-size: 0.9rem;
   color: #808080;
   text-decoration: none;
@@ -60,12 +60,12 @@
   text-align: right;
 }
 
-.forgot-password:hover {
+.login-forgot-password:hover {
   color: #555;
   text-decoration: underline;
 }
 
-.btn-login {
+.login-btn-login {
   background-color: #2d542f;
   color: white;
   padding: 12px;
@@ -77,11 +77,11 @@
   font-size: 1rem;
 }
 
-.btn-login:hover {
+.login-btn-login:hover {
   background-color: #1f3c22;
 }
 
-.mensagem {
+.login-mensagem {
   text-align: center;
   margin-top: 10px;
   color: #28a745;
