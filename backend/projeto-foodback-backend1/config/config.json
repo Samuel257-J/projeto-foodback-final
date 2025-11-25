@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "Samuka257J@",
+    "database": "foodback_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "Samuka257J@",
+    "database": "foodback_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "Samuka257J@",
+    "database": "foodback_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
