@@ -27,9 +27,17 @@ export default (sequelize, DataTypes) => {
   );
 
   Usuario.associate = (models) => {
-    Usuario.hasOne(models.Ong, { foreignKey: "id_usuario" });
-    Usuario.hasOne(models.Empresa, { foreignKey: "id_usuario" });
+    Usuario.hasOne(models.Ong, { 
+      foreignKey: "id_usuario",
+      as: "ong" // ⭐ alias único
+    });
+
+    Usuario.hasOne(models.Empresa, { 
+      foreignKey: "id_usuario",
+      as: "empresa" // ⭐ alias único
+    });
   };
+
 
   return Usuario;
 };

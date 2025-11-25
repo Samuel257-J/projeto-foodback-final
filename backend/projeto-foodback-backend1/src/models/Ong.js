@@ -16,14 +16,19 @@ export default (sequelize, DataTypes) => {
       responsavel_recebimento: DataTypes.STRING(120),
       telefone_responsavel: DataTypes.STRING(20),
       horarios_disponiveis: DataTypes.STRING(120),
-      perfil_completo: { type: DataTypes.BOOLEAN, defaultValue: false } // ✅ NOVO CAMPO
+      perfil_completo: { type: DataTypes.BOOLEAN, defaultValue: false }
     },
     { tableName: "ongs", timestamps: false }
   );
 
-  Ong.associate = (models) => {
-    Ong.belongsTo(models.Usuario, { foreignKey: "id_usuario" });
-  };
+ Ong.associate = (models) => {
+  Ong.belongsTo(models.Usuario, { 
+    foreignKey: "id_usuario",
+    as: "usuario"   // alias corrigido
+  });
+};
+
+
 
   return Ong;
 };

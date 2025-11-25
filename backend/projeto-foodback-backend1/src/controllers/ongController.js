@@ -143,25 +143,67 @@ class OngController {
     }
   }
 
-  // ✅ Buscar dados da ONG
+  // ✅ Buscar dados da ONG com informações do usuário
   async buscarDados(req, res) {
     const { id_usuario } = req.params;
 
+    console.log("🔍 Backend: Buscando ONG para id_usuario:", id_usuario);
+
     try {
-      const ong = await Ong.findOne({ where: { id_usuario } });
+      const ong = await Ong.findOne({ 
+        where: { id_usuario },
+        include: [{
+          model: Usuario,
+          as: 'Usuario', // Certifique-se de que o alias está correto no seu model
+          attributes: ['nome', 'email', 'telefone', 'cnpj']
+        }]
+      });
 
       if (!ong) {
+        console.log("❌ Backend: ONG não encontrada para id_usuario:", id_usuario);
         return res.status(404).json({ error: "Dados da ONG não encontrados." });
       }
 
-      return res.status(200).json(ong);
+      console.log("✅ Backend: ONG encontrada:", {
+        id_ong: ong.id_ong,
+        natureza_juridica: ong.natureza_juridica,
+        area_atuacao: ong.area_atuacao,
+        numero_pessoas_atendidas: ong.numero_pessoas_atendidas,
+        possui_transporte: ong.possui_transporte
+      });
+
+      // Retorna os dados da ONG formatados
+      const dadosOng = {
+        id_ong: ong.id_ong,
+        id_usuario: ong.id_usuario,
+        natureza_juridica: ong.natureza_juridica,
+        area_atuacao: ong.area_atuacao,
+        descricao: ong.descricao,
+        ano_fundacao: ong.ano_fundacao,
+        numero_pessoas_atendidas: ong.numero_pessoas_atendidas,
+        tipo_publico: ong.tipo_publico,
+        necessidades: ong.necessidades,
+        capacidade_armazenamento: ong.capacidade_armazenamento,
+        possui_transporte: ong.possui_transporte,
+        responsavel_recebimento: ong.responsavel_recebimento,
+        telefone_responsavel: ong.telefone_responsavel,
+        horarios_disponiveis: ong.horarios_disponiveis,
+        perfil_completo: ong.perfil_completo,
+        // Dados do usuário
+        razao_social: ong.Usuario?.nome,
+        email: ong.Usuario?.email,
+        telefone: ong.Usuario?.telefone,
+        cnpj: ong.Usuario?.cnpj
+      };
+
+      return res.status(200).json(dadosOng);
     } catch (error) {
-      console.error("Erro ao buscar ONG:", error);
+      console.error("❌ Backend: Erro ao buscar ONG:", error);
       return res.status(500).json({ error: "Erro ao buscar dados da ONG." });
     }
   }
 
-  // ✅ NOVO - Verificar se perfil está completo
+  // ✅ Verificar se perfil está completo
   async verificarPerfilCompleto(req, res) {
     const { id_usuario } = req.params;
 
