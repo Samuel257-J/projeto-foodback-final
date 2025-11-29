@@ -9,6 +9,7 @@ import itemDoacaoRoutes from "./src/routes/itemDoacaoRoutes.js";
 import solicitacaoRoutes from "./src/routes/solicitacaoRoutes.js";
 import retiradaRoutes from "./src/routes/retiradaRoutes.js";
 import sequelize from "./src/config/database.js";
+import mercadoPagoRoutes from "./src/routes/mercadoPagoRoutes.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use("/doacoes", doacaoRoutes);
 app.use("/itens-doacao", itemDoacaoRoutes);
 app.use("/solicitacoes", solicitacaoRoutes);
 app.use("/retiradas", retiradaRoutes);
+app.use("/api/mercadopago", mercadoPagoRoutes);
 
 sequelize.sync().then(() => {
   console.log("Conectado ao MySQL com sucesso!");
