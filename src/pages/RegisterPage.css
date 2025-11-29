@@ -1,0 +1,298 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&display=swap");
+
+.register-wrapper {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 70%, #000 100%),
+              url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
+  background-blend-mode: overlay;
+  font-family: Poppins, sans-serif;
+}
+
+/* CONTAINER */
+.register-container {
+  display: flex;
+  width: 80%;
+  max-width: 1100px;
+  height: 85vh;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgb(0 0 0 / 25%);
+  background-color: white;
+}
+
+/* LADO ESQUERDO (mesmo fundo da HomePage) */
+.register-left {
+  flex: 1;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 70%, #000 100%),
+              url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
+  background-blend-mode: overlay;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+}
+
+.register-left h1 {
+  font-size: 4rem;
+  margin-bottom: 8px;
+  font-family: Anton, sans-serif;
+  text-shadow: 2px 2px 5px rgb(0 0 0 / 40%);
+}
+
+/* Cores do nome FOODBACK */
+.register-left .logo-food {
+  color: #fff;
+}
+
+.register-left .logo-back {
+  color: #015f03;
+}
+
+.register-left p {
+  font-size: 1rem;
+  margin-top: 2px;
+  opacity: 0.95;
+}
+
+/* LADO DIREITO (formulário) */
+.register-right {
+  flex: 1.4;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 50px 60px;
+  overflow-y: auto;
+  max-height: 100vh;
+  scrollbar-width: thin;
+  scrollbar-color: #236007 #e0e0e0;
+}
+
+/* Estilo da barra de rolagem no Chrome, Edge e Safari */
+.register-right::-webkit-scrollbar {
+  width: 8px;
+}
+
+.register-right::-webkit-scrollbar-thumb {
+  background-color: #236007;
+  border-radius: 8px;
+}
+
+.register-right::-webkit-scrollbar-track {
+  background-color: #e0e0e0;
+}
+
+.register-right h2 {
+  color: #236007;
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Badge de tipo */
+.tipo-badge {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  color: #236007;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+  border: 2px solid #a5d6a7;
+  box-shadow: 0 2px 8px rgba(35, 96, 7, 0.1);
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.register-right label {
+  font-weight: 500;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.register-right input,
+.register-right select {
+  width: 100%;
+  padding: 9px 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  transition: border 0.3s;
+}
+
+.register-right input:focus,
+.register-right select:focus {
+  outline: none;
+  border-color: #236007;
+}
+
+/* === SEÇÃO DE ENDEREÇO === */
+.endereco-section {
+  margin-top: 15px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.endereco-section h3 {
+  color: #236007;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  margin-top: 0;
+  text-align: center;
+}
+
+.endereco-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.endereco-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.endereco-col-small {
+  flex: 0.4;
+}
+
+.endereco-col-large {
+  flex: 1.6;
+}
+
+.cep-loading {
+  font-size: 0.85rem;
+  color: #236007;
+  font-style: italic;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+.btn-register {
+  background-color: #2d542f;
+  color: white;
+  padding: 11px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-register:hover {
+  background-color: #1f3c22;
+}
+
+.mensagem {
+  text-align: center;
+  margin-top: 12px;
+  color: #28a745;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.link-login {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.link-login a {
+  color: #236007;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.link-login a:hover {
+  color: #457237;
+  text-decoration: underline;
+}
+
+/* Link para trocar tipo de cadastro */
+.link-trocar-tipo {
+  text-align: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.link-trocar-tipo a {
+  color: #236007;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.link-trocar-tipo a:hover {
+  color: #457237;
+  text-decoration: underline;
+}
+
+/* Responsivo */
+@media (width <= 900px) {
+  .register-container {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+  }
+
+  .register-left,
+  .register-right {
+    flex: none;
+    width: 100%;
+  }
+
+  .register-left {
+    padding: 30px 25px;
+  }
+
+  .register-right {
+    padding: 30px 25px;
+  }
+
+  .register-left h1 {
+    font-size: 2.3rem;
+  }
+
+  .endereco-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .endereco-col-small,
+  .endereco-col-large {
+    flex: 1;
+  }
+
+  .tipo-badge {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
