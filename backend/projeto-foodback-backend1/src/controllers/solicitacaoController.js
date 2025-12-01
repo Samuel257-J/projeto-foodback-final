@@ -1,6 +1,6 @@
 import db from "../models/index.js";
 
-const { Solicitacao, Doacao, Ong, Empresa, Usuario } = db;
+const { Solicitacao, Doacao, Ong, Empresa, Usuario, Retirada } = db;
 
 class SolicitacaoController {
   // Criar nova solicitação
@@ -81,13 +81,11 @@ class SolicitacaoController {
 
       console.log("🔍 Buscando solicitações da empresa (id_usuario):", id_usuario);
 
-      // Busca a empresa pelo id_usuario
       const empresa = await Empresa.findOne({ where: { id_usuario } });
       if (!empresa) {
         return res.status(404).json({ error: "Empresa não encontrada" });
       }
 
-      // Busca todas as solicitações das doações desta empresa
       const solicitacoes = await Solicitacao.findAll({
         include: [
           {
@@ -95,6 +93,13 @@ class SolicitacaoController {
             where: { id_empresa: empresa.id_empresa },
             attributes: ['id_doacao', 'titulo', 'categoria', 'quantidade', 'validade']
           },
+
+          // ⭐ INCLUIR A RETIRADA AQUI
+          {
+            model: Retirada,
+            required: false // permite vir null quando não houver retirada
+          },
+
           {
             model: Ong,
             include: [
@@ -108,8 +113,6 @@ class SolicitacaoController {
         order: [["data_solicitacao", "DESC"]]
       });
 
-      console.log("✅ Solicitações encontradas:", solicitacoes.length);
-
       return res.status(200).json(solicitacoes);
 
     } catch (error) {
@@ -121,6 +124,7 @@ class SolicitacaoController {
     }
   }
 
+
   // Buscar solicitações de uma ONG
   static async buscarPorOng(req, res) {
     try {
@@ -128,13 +132,11 @@ class SolicitacaoController {
 
       console.log("🔍 Buscando solicitações da ONG (id_usuario):", id_usuario);
 
-      // Busca a ONG pelo id_usuario
       const ong = await Ong.findOne({ where: { id_usuario } });
       if (!ong) {
         return res.status(404).json({ error: "ONG não encontrada" });
       }
 
-      // Busca todas as solicitações desta ONG
       const solicitacoes = await Solicitacao.findAll({
         where: { id_ong: ong.id_ong },
         include: [
@@ -152,12 +154,16 @@ class SolicitacaoController {
                 ]
               }
             ]
+          },
+
+          // ⭐ INCLUIR A RETIRADA AQUI TAMBÉM
+          {
+            model: Retirada,
+            required: false
           }
         ],
         order: [["data_solicitacao", "DESC"]]
       });
-
-      console.log("✅ Solicitações encontradas:", solicitacoes.length);
 
       return res.status(200).json(solicitacoes);
 
@@ -169,6 +175,7 @@ class SolicitacaoController {
       });
     }
   }
+
 
   // Aprovar solicitação
   static async aprovar(req, res) {
